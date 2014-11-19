@@ -75,22 +75,9 @@ Then build lm4flash and run it:
 
 ## Debugging with gdb
 
-[Karl Palsson just posted](http://sourceforge.net/p/openocd/mailman/message/32139143/) support for
-the board in openocd. Instructions to build openocd using his patch:
-```
-git clone http://openocd.zylin.com/openocd
-cd openocd
-git fetch http://openocd.zylin.com/openocd refs/changes/63/2063/1
-git checkout FETCH_HEAD
-git submodule init
-git submodule update
-./bootstrap
-./configure --enable-ti-icdi --prefix=`pwd`/..
-make -j3
-make install
-```
+These chips are supported in openocd HEAD ([credit to Karl Palsson](http://sourceforge.net/p/openocd/mailman/message/32139143/)). The [openocd website](http://openocd.sourceforge.net/) has instructions on how to install it.
 
-Then run gdb with this command:
+With openocd installed, run gdb with this command:
 ```
 arm-none-eabi-gdb -ex 'target extended-remote | openocd -f board/ek-tm4c1294xl.cfg -c "gdb_port pipe; log_output openocd.log"; monitor reset; monitor halt'
 ```
