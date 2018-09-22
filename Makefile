@@ -63,6 +63,9 @@ $(OUTDIR)/main.bin: $(OUTDIR)/a.out
 $(OUTDIR):
 	$(MKDIR) $(OUTDIR)
 
+flash: $(OUTDIR)/$(TARGET).bin
+	sudo lm4flash $(OUTDIR)/$(TARGET).bin
+
 clean:
 	-$(RM) $(OUTDIR)/*
 
